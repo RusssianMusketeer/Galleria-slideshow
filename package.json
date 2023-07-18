@@ -2,7 +2,7 @@
   "name": "galleria-slideshow",
   "version": "0.0.0",
   "private": true,
-  "homepage": "https://arseniDmitriev.github.io/Galleria-slideshow",
+  "homepage": "https://russsianmusketeer.github.io/Galleria-slideshow/",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
