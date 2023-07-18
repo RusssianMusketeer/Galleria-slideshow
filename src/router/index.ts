@@ -13,7 +13,7 @@ const router = createRouter({
       path: '/gallery/:id',
       name: 'gallery',
       component: DetailView,
-      props: true
+      props: true,
     }
   ]
 })

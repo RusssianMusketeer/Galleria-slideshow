@@ -4,4 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
+#app {
+    position:relative
+}
