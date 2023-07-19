@@ -1,3 +1,2 @@
 module.exports = {
-    publicPath: '/Galleria-slideshow/'
-  }
+    publicPath: "/Galleria-slideshow/"}
