@@ -5,8 +5,8 @@
         <div class="relative flex-col sm:flex-row flex-1 xlg:block flex justify-between mb-0 sm:mb-16 xlg:mb-0">
             <div class="relative sm:w-[80%] xlg:w-auto">
             <div class="relative">
-            <img :src="/src/ + storeState.Images[props.id].images.gallery" class="w-full max-h-[700px] object-cover xlg:h-[560px] xlg:w-[475px]"/>
-            <button class="block" @click="storeState.toogleSwitch(props.id)">
+            <img :src="getImageUrl()" class="w-full max-h-[700px] object-cover xlg:h-[560px] xlg:w-[475px]"/>
+            <button class="block" @click="storeState.toogleSwitch(props.imageName, props.id)">
                 <div class="bg-black/[.75] p-3 flex w-fit absolute left-4 top-4 sm:top-auto sm:bottom-4 items-center hover:bg-white/[.15] transition-colors">                   
                     <View class="mr-4"/>
                     <p class="text-white font-serif text-[10px] tracking-[.25em] ">VIEW IMAGE</p>
@@ -19,7 +19,7 @@
             </div>
         </div>
             <div class="xlg:flex sm:mt-0 mt-16 relative justify-end xlg:mt-4 xlg:pl-0 sm:pl-8 sm:self-end md:self-center">
-            <img :src="/src/ + storeState.Images[props.id].artist.image" class="w-[90px] extraSm:w-fit"/>
+            <img :src="getArtistImageUrl()" class="w-[90px] extraSm:w-fit"/>
             </div>
         </div>
         <div class="flex-1 relative">
@@ -39,12 +39,19 @@
 import { useStateStore } from '@/stores/state'
 import Footer from '@/components/FooterView.vue'
 import View from '@/assets/shared/icon-view-image.svg'
-
 const storeState = useStateStore();
 
 const props = defineProps<{
   id: number,
+  imageName:string
 }>()
+const getImageUrl = () => {
+   return new URL(`/src/assets/${props.imageName}/gallery.jpg`, import.meta.url).href
+}
+
+const getArtistImageUrl = () => {
+   return new URL(`/src/assets/${props.imageName}/artist.jpg`, import.meta.url).href
+}
 
 </script>
 

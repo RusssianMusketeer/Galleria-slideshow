@@ -7,12 +7,14 @@ export const useStateStore = defineStore({
     Images,
     toogle: false,
     id : 0,
+    name: ''
   }),
   actions: {
       // since we rely on `this`, we cannot use an arrow function
-      toogleSwitch (id: number)  {
+      toogleSwitch (name: string, id:number)  {
         this.toogle=!this.toogle
         this.id = id
+        this.name = name
       },
   }
 

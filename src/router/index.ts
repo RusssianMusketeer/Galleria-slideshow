@@ -10,7 +10,7 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/gallery/:id',
+      path: '/gallery/:id/:imageName',
       name: 'gallery',
       component: DetailView,
       props: true,

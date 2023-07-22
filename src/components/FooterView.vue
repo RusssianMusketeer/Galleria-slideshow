@@ -23,6 +23,7 @@ import BackLogo from '@/assets/shared/icon-back-button.svg'
 import FrontLogo from '@/assets/shared/icon-next-button.svg'
 import { computed, ref } from 'vue';
 import router from '@/router';
+import Images from '@/assets/data.json'; 
 
 const props = defineProps<{
   artistName:string,
@@ -34,11 +35,11 @@ const count = ref(props.id)
 
 const addCount = () => { 
     count.value++
-    router.push({ name: 'gallery', params: {'id': Number(count.value)}});
+    router.push({ name: 'gallery', params: {'id': count.value,'imageName': Images[count.value].lowerName }});
 }
 const removeCount = () => {
     count.value--
-    router.push({ name: 'gallery', params: {'id': count.value}});
+    router.push({ name: 'gallery', params: {'id': count.value , 'imageName': Images[count.value].lowerName }});
 }
 
 const countDisableZero= computed(() => {

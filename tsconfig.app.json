@@ -1,9 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "types": [ "node" ],
+  "typeRoots": [ "../node_modules/@types" ],
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "@/assets/data.json"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "baseUrl": ".",
+    "types": ["node"],
     "paths": {
       "@/*": ["./src/*"]
     }

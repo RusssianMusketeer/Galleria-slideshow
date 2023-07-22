@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { useStateStore } from '@/stores/state'
 import { RouterView } from 'vue-router'
 import HeaderView from '@/components/HeaderView.vue';
-import { useStateStore } from '@/stores/state'
 const storeState = useStateStore();
+
+function getImageUrl() {
+  return new URL(`/src/assets/${storeState.name}/gallery.jpg`, import.meta.url).href
+}
 
 </script>
 
@@ -13,7 +17,7 @@ const storeState = useStateStore();
             <button class="text-white font-serif text-[12px] w-fit tracking-[.25em] hover:opacity-30 transition self-end mb-6" @click="storeState.toogleSwitch">
             CLOSE
           </button>
-            <img :src="/src/ + storeState.Images[storeState.id].images.gallery" >
+            <img :src="getImageUrl()" >
           </div>
         </div>
         </div>
