@@ -10,7 +10,7 @@
             <button @click="removeCount" :disabled="countDisableZero" class="mr-8">
                 <BackLogo :class="['stroke-2', cssDisable(countDisableZero), 'hover:opacity-50', 'transition' ]"/> 
             </button>
-            <button @click="addCount" :disabled="countDisableFourteen" :class="{'fill-black-gray' : countDisableFourteen}" >
+            <button @click="addCount" :disabled="countDisableFourteen" :class="[{'fill-black-gray' : countDisableFourteen}, 'next' ]" >
                 <FrontLogo :class="['stroke-2', cssDisable(countDisableFourteen), 'hover:opacity-50', 'transition' ]"/>
             </button>
         </div>

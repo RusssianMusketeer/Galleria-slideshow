@@ -7,14 +7,14 @@
             <div class="relative">
             <img :src="getImageUrl()" class="w-full max-h-[700px] object-cover xlg:h-[560px] xlg:w-[475px]"/>
             <button class="block" @click="storeState.toogleSwitch(props.imageName, props.id)">
-                <div class="bg-black/[.75] p-3 flex w-fit absolute left-4 top-4 sm:top-auto sm:bottom-4 items-center hover:bg-white/[.15] transition-colors">                   
+                <div class="bg-black/[.75] view p-3 flex w-fit absolute left-4 top-4 sm:top-auto sm:bottom-4 items-center hover:bg-white/[.15] transition-colors">                   
                     <View class="mr-4"/>
                     <p class="text-white font-serif text-[10px] tracking-[.25em] ">VIEW IMAGE</p>
                 </div>
             </button>
             </div>
             <div class="absolute bottom-[-2rem] sm:top-0 bg-white px-10 xlg:px-8 pt-8 sm:pt-0 xlg:pt-8 h-fit sm:pb-12 sm:left-[55%] max-w-[400px] md:w-max">
-                <h1 class="font-serif text-2xl md:text-6xl whitespace-break-spaces">{{ storeState.Images[props.id].name }}</h1>
+                <h1 class="font-serif name text-2xl md:text-6xl whitespace-break-spaces">{{ storeState.Images[props.id].name }}</h1>
                 <p class="font-serif text-dark-gray text-base whitespace-nowrap sm:mt-4"> {{ storeState.Images[props.id].artist.name }}</p>
             </div>
         </div>
