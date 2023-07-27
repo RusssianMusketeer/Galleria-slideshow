@@ -3,14 +3,14 @@
     <div class="relative bg-black h-px" :style="`width: ${width()}%`" />
     <div class="flex border-t border-medium-gray justify-between  w-full relative bottom-0 bg-white z-10">
         <div class="py-6">
-            <h3 class="font-serif font-bold text-lg">{{ props.imageName }}</h3>
+            <h1 class="font-serif font-bold text-lg">{{ props.imageName }}</h1>
             <p class="text-sm font-serif opacity-75 leading-8">{{ props.artistName }}</p>
         </div>
         <div class="flex items-center"> 
-            <button @click="removeCount" :disabled="countDisableZero" class="mr-8">
+            <button @click="removeCount" aria-label="button previous page" :disabled="countDisableZero" class="mr-8">
                 <BackLogo :class="['stroke-2', cssDisable(countDisableZero), 'hover:opacity-50', 'transition' ]"/> 
             </button>
-            <button @click="addCount" :disabled="countDisableFourteen" :class="[{'fill-black-gray' : countDisableFourteen}, 'next' ]" >
+            <button @click="addCount" aria-label="button next page" :disabled="countDisableFourteen" :class="[{'fill-black-gray' : countDisableFourteen}, 'next' ]" >
                 <FrontLogo :class="['stroke-2', cssDisable(countDisableFourteen), 'hover:opacity-50', 'transition' ]"/>
             </button>
         </div>
