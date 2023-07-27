@@ -3,7 +3,7 @@
 describe('Sanity test', () => {
   it('visits the app root url', () => {
     cy.visit('/')
-    cy.contains('h2', 'Starry Night')
-    cy.contains('h2', 'Girl with a Pearl Earring')
+    cy.contains('span', 'Starry Night')
+    cy.contains('span', 'Girl with a Pearl Earring')
   })
 })
