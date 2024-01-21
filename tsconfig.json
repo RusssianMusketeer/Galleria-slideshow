@@ -1,5 +1,7 @@
 {
   "files": [],
+  "noImplicitAny": false,
+  "allowJs": true,
   "references": [
     {
       "path": "./tsconfig.node.json"
@@ -12,7 +14,7 @@
     }
   ],
   "compilerOptions": {
-    "types": ["vite/client","node"],
+    "types": ["vite/client", "node"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

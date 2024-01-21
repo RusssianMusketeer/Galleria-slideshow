@@ -1,2 +1,1 @@
-module.exports = {
-    publicPath: "/Galleria-slideshow/"}
+export const publicPath = '/Galleria-slideshow/'
