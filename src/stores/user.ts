@@ -9,7 +9,7 @@ export interface User {
   token: string
 }
 
-const apiUrl = process.env.VUE_APP_API_URL
+const apiUrl = VUE_APP_API_URL
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -24,7 +24,7 @@ export const useUserStore = defineStore({
   actions: {
     async signIn(formData: any) {
       try {
-        console.log(apiUrl, 'response')
+        console.log(apiUrl, process.env.VUE_APP_API_URL, 'response')
         const response = await axios.post(`${apiUrl}/login`, formData)
         console.log(apiUrl, 'response')
         this.id = response.data.user.id
