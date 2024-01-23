@@ -9,7 +9,7 @@ export interface User {
   token: string
 }
 
-const apiUrl = VUE_APP_API_URL
+const apiUrl = process.env.VUE_APP_API_URL
 
 export const useUserStore = defineStore({
   id: 'user',
