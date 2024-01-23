@@ -9,6 +9,8 @@ export interface User {
   token: string
 }
 
+const apiUrl = process.env.VUE_APP_API_URL
+
 export const useUserStore = defineStore({
   id: 'user',
   state: () =>
@@ -22,10 +24,11 @@ export const useUserStore = defineStore({
   actions: {
     async signIn(formData: any) {
       try {
-        const response = await axios.post('http://localhost:8000/login', formData)
+        const response = await axios.post(`${apiUrl}/login`, formData)
+        console.log(response, 'response')
         this.id = response.data.user.id
         this.token = response.data.token
-        const responsePaintings = await axios.get('http://localhost:8000/paintings', {
+        const responsePaintings = await axios.get(`${apiUrl}/paintings`, {
           headers: {
             authorization: this.token
           },
@@ -48,7 +51,7 @@ export const useUserStore = defineStore({
     },
     async signUp(formData: any) {
       try {
-        const response = await axios.post('http://localhost:8000/register', formData)
+        const response = await axios.post(`${apiUrl}/register`, formData)
         this.id = response.data.insertId
         await this.favoritePainting(this.id)
 
@@ -61,7 +64,7 @@ export const useUserStore = defineStore({
     },
     async resetPassword(formData: any) {
       try {
-        await axios.post('http://localhost:8000/reset', formData)
+        await axios.post(`${apiUrl}/reset`, formData)
       } catch (error) {
         console.log(error)
         throw new Error('error reseting password')
@@ -69,7 +72,7 @@ export const useUserStore = defineStore({
     },
     async checkPassword(token: string) {
       try {
-        const response = await axios.get(`http://localhost:8000/reset/${token}`)
+        const response = await axios.get(`${apiUrl}/reset/${token}`)
         this.id = response.data.id
         this.email = response.data.email
         this.password = response.data.password
@@ -80,7 +83,7 @@ export const useUserStore = defineStore({
     },
     async updatePassword(formData: any) {
       try {
-        await axios.put('http://localhost:8000/reset', {
+        await axios.put(`${apiUrl}/reset`, {
           password: formData.password,
           id: this.id,
           email: this.email
@@ -92,7 +95,7 @@ export const useUserStore = defineStore({
     },
     async retrivePaintings(info: any) {
       try {
-        const response = await axios.get('http://localhost:8000/paintings', info)
+        const response = await axios.get(`${apiUrl}/paintings`, info)
         console.log(response, 'response')
       } catch (error) {
         console.log(error, 'error')
@@ -100,7 +103,7 @@ export const useUserStore = defineStore({
     },
     async favoritePainting(userId: number | null) {
       try {
-        const response = await axios.post('http://localhost:8000/paintings', {
+        const response = await axios.post(`${apiUrl}/paintings`, {
           userId: userId,
           paintings: []
         })
@@ -116,7 +119,7 @@ export const useUserStore = defineStore({
       console.log(this.token, 'TOKENNNN')
       try {
         const response = await axios.put(
-          'http://localhost:8000/paintings',
+          `${apiUrl}/paintings`,
           {
             userId: userId,
             email: this.email,
@@ -135,7 +138,7 @@ export const useUserStore = defineStore({
     },
     async logout() {
       try {
-        await axios.get('http://localhost:8000/logout')
+        await axios.get(`${apiUrl}/logout`)
         ;(this.email = ''), (this.password = ''), (this.id = null), (this.paintings = [])
       } catch (error) {
         console.log(error)
