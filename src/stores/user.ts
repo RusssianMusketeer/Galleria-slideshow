@@ -24,8 +24,9 @@ export const useUserStore = defineStore({
   actions: {
     async signIn(formData: any) {
       try {
+        console.log(apiUrl, 'response')
         const response = await axios.post(`${apiUrl}/login`, formData)
-        console.log(response, 'response')
+        console.log(apiUrl, 'response')
         this.id = response.data.user.id
         this.token = response.data.token
         const responsePaintings = await axios.get(`${apiUrl}/paintings`, {
