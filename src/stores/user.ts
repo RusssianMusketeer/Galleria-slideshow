@@ -8,7 +8,7 @@ export interface User {
   id: number | null
   token: string
 }
-const apiUrl = import.meta.env.VUE_APP_API_URL
+const apiUrl = process.env.VUE_APP_API_URL
 export const useUserStore = defineStore({
   id: 'user',
   state: () =>
