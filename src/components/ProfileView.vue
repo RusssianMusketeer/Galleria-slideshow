@@ -1,6 +1,6 @@
 <template>
   <section class="bg-cover pb-12 h-full w-full relative">
-    <div class="flex justify-between mt-8">
+    <div class="flex justify-between mt-8 flex-col md:flex-row">
       <div>
         <h1 class="font-serif mb-12 opacity-90 name text-3xl">User Profile</h1>
         <h1 class="font-serif mb-4 opacity-90 name text-xl">Email: {{ userState.email }}</h1>
@@ -15,7 +15,7 @@
       </div>
 
       <div class="w-full flex items-center flex-col">
-        <h1 class="font-serif opacity-90 name text-3xl mb-8">Favorited Paintings</h1>
+        <h1 class="font-serif opacity-90 name text-3xl mt-8 md:mt-0 mb-8">Favorited Paintings</h1>
         <div class="flex flex-wrap columns-3 justify-center gap-8">
           <div v-for="painting in filteredPaintings" :key="painting.id" class="flex h-fit">
             <RouterLink

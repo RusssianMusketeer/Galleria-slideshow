@@ -14,7 +14,7 @@
               />
               <button class="block" @click="storeState.toogleSwitch(props.imageName, props.id)">
                 <div
-                  class="bg-black/[.75] view p-3 flex w-fit absolute left-4 top-4 sm:top-auto sm:bottom-4 items-center hover:bg-white/[.15] transition-colors"
+                  class="bg-black/[.75] view p-3 flex w-fit absolute left-4 top-4 sm:top-auto sm:bottom-4 items-center hover:bg-white/[.3] transition-colors"
                 >
                   <View class="mr-4" />
                   <p class="text-white font-serif text-[12px] tracking-[.25em]">VIEW IMAGE</p>
@@ -104,7 +104,7 @@ const getArtistImageUrl = (): string => {
   return new URL(`/src/assets/${props.imageName}/artist.jpg`, import.meta.url).href
 }
 
-const favoritePainting = async ():Promise<void> => {
+const favoritePainting = async (): Promise<void> => {
   try {
     await userState.updatePaintings(userState.id, storeState.Images[props.id].name)
   } catch (err) {

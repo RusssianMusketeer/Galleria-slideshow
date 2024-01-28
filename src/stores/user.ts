@@ -22,9 +22,7 @@ export const useUserStore = defineStore({
   actions: {
     async signIn(formData: any) {
       try {
-        console.log(apiUrl, process.env.VUE_APP_API_URL, 'response')
         const response = await axios.post(`${apiUrl}/login`, formData)
-        console.log(apiUrl, 'response')
         this.id = response.data.user.id
         this.token = response.data.token
         const responsePaintings = await axios.get(`${apiUrl}/paintings`, {
