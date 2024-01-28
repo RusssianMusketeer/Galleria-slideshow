@@ -11,6 +11,7 @@
       <div class="flex items-center">
         <button
           @click="removeCount"
+          @keyup.right="removeCount"
           aria-label="button previous page"
           :disabled="countDisableZero"
           class="mr-8"
@@ -45,6 +46,8 @@ import FrontLogo from '@/assets/shared/icon-next-button.svg'
 import { computed, ref, type ComputedRef, type Ref } from 'vue'
 import router from '@/router'
 import Images from '@/assets/data.json'
+import { onBeforeMount } from 'vue'
+import { useRoute } from 'vue-router'
 
 const props = defineProps<{
   artistName: string
@@ -53,21 +56,39 @@ const props = defineProps<{
 }>()
 
 const count: Ref<number> = ref(props.id)
+const route = useRoute()
 
 const addCount = (): void => {
-  count.value++
-  router.push({
-    name: 'gallery',
-    params: { id: count.value, imageName: Images[count.value].lowerName }
-  })
+  if (count.value < 14) {
+    count.value++
+    router.push({
+      name: 'gallery',
+      params: { id: count.value, imageName: Images[count.value].lowerName }
+    })
+  }
 }
 const removeCount = (): void => {
-  count.value--
-  router.push({
-    name: 'gallery',
-    params: { id: count.value, imageName: Images[count.value].lowerName }
-  })
+  if (count.value > 0) {
+    count.value--
+    router.push({
+      name: 'gallery',
+      params: { id: count.value, imageName: Images[count.value].lowerName }
+    })
+    console.log(count.value, 'remove')
+  }
 }
+
+onBeforeMount(() => {
+  window.addEventListener('keyup', (event) => {
+    if (route.path.includes('/gallery/') && 0 <= count.value && count.value < 15) {
+      if (event.key == 'ArrowLeft') {
+        removeCount()
+      } else if (event.key == 'ArrowRight') {
+        addCount()
+      }
+    }
+  })
+})
 
 const countDisableZero: ComputedRef<boolean> = computed(() => {
   return count.value == 0
